@@ -1,0 +1,190 @@
+<!-- search bar starts here  -->
+
+<div class="searchDivContainer" *ngIf="!userRepo" style="background-image: url('../../../assets/water.png');
+background-repeat: no-repeat;overflow: hidden;
+background-size: cover;
+background-position: center;">
+  <div class="searchDivParent">
+    <!-- github image added  -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="300"
+      height="300"
+      fill="currentColor"
+      class="bi bi-github"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+      />
+    </svg>
+
+    <!-- search div input and button starts here  -->
+    <div class="searchDiv">
+      <input
+        id="name"
+        class="form-control"
+        type="text"
+        placeholder="GitHUB User"
+        [formControl]="name"
+      />
+      <button
+        class="btn btn-sm btn-dark"
+        (click)="getUserData()"
+        [disabled]="!name.value"
+      >
+        Search
+      </button>
+    </div>
+    <!-- search div input and button starts here  -->
+
+
+  </div>
+</div>
+
+<!-- search Container ends here  -->
+
+<!-- If there is user found then on basis of serach results user repo details are shown here.So for that user contaier starts here  -->
+
+<div *ngIf="userRepo && userData.repos.length" class>
+  <!-- CSS Waves added here -->
+  <!-- INNER header starts here  -->
+
+  <div class="header">
+    <!--Content before waves starts here-->
+    <div class="inner-header flex">
+      <div class="repoUserInfoContainer">
+        <!-- user image shown here  -->
+        <div class="userImg" auto-focus="none">
+          <img
+            #Img
+            src="{{
+              userData.avatar_url ? userData.avatar_url : 'favicon.ico'
+            }}"
+            alt="..."
+          />
+        </div>
+
+        <!-- user information shown here  -->
+        <div class="userInfo">
+          <h1 class="userName">
+            <strong> {{ userData.name }}</strong>
+          </h1>
+          <br />
+          <!-- <p class="userDetails"> {{userData.login}}</p> -->
+          <p class="userDetails">{{ userData.bio }}</p>
+          <p class="userDetails">
+            <mat-icon
+              ><span class="material-icons-outlined"> business</span></mat-icon
+            >
+            {{ userData.company }}
+          </p>
+          <p class="userDetails">
+            <mat-icon
+              ><span class="material-icons-outlined">
+                location_on
+              </span></mat-icon
+            >
+            {{ userData.location }}
+          </p>
+          <p class="userDetails">
+            <mat-icon
+              ><span class="material-icons-outlined"> link </span></mat-icon
+            ><a
+              href="{{ userData.url ? userData.url : '' }}"
+              class="hyperLink"
+              >{{ userData.url ? userData.url : "Url" }}</a
+            >
+          </p>
+        </div>
+        <!-- </mat-card> -->
+      </div>
+      <div class="clearBtn">
+        <button
+          class="btn btn-sm btn-secondary backBtn"
+          (click)="showUserRepo(false)">
+
+          <mat-icon>
+            <span class="material-icons-outlined" class="backBtn">
+              arrow_back
+            </span>
+          </mat-icon>
+          <P class="backBtnText"> Return to home page</P>
+        </button>
+      </div>
+    </div>
+
+    <!--Content ends here-->
+
+
+  </div>
+  <!--Header ends-->
+
+  <!--Content starts-->
+  <!-- to show user repo deatils lists starts here  -->
+
+  <div class="container-fluid">
+    <ul class="meal-list row"  style="background-image: url('../../../assets/water.png');
+     background-repeat: no-repeat;overflow: hidden;
+    background-size: cover;
+    background-position: center;">
+      <li
+        class="col-md-4 col-sm-6"
+        *ngFor="
+          let data of userData.repos
+            | paginate
+              : {
+                  itemsPerPage: utils.itemsPerPage,
+                  currentPage: pageSelected,
+                  totalItems: userData.public_repos
+                }
+        "
+      >
+        <!-- details material contains card name, detail, link, languages card starts here  -->
+        <mat-card class="dataCard matCard"  style="background-color:rgb(238, 238, 238);">
+          <div>
+            <h3>{{ data.name }}<span class="tag">PUBLIC</span></h3>
+            <p>
+              {{
+                data.description
+                  ? (data.description | slice: 0:75)
+                  : "Project in Computer Science"
+              }}
+              {{
+                data.description && data.description.length > 75 ? "..." : ""
+              }}
+            </p>
+            <p>
+              <!-- accessable url  -->
+              <a
+                href="{{ data.html_url ? data.html_url : '' }}"
+                class="hyperLink"
+                >{{ data.html_url ? data.html_url : "Url" }}</a
+              >
+            </p>
+            <div class="tiles">
+              <span>{{ data.language ? data.language : "none" }}</span>
+            </div>
+          </div>
+        </mat-card>
+        <!-- details card ends here  -->
+      </li>
+    </ul>
+  </div>
+  <!-- repo deatils ends here  -->
+
+  <!-- pagination with value per page 10  -->
+  <pagination-controls
+    (pageChange)="pageChangeHandler($event)"
+  ></pagination-controls>
+
+  <!-- pagination ends  -->
+
+  <div class="content flex center">
+    <br />
+    <p>By. Shivam Badoniya</p>
+  </div>
+  <!--Content ends-->
+</div>
+
+<!-- user details Container ends here  -->

@@ -1,0 +1,380 @@
+// search sscss starts here
+
+.searchDivContainer {
+  position: relative;
+  height: calc(100% - 50px);
+
+  .searchDivParent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 45%;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+
+    .searchDiv {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: ridge;
+
+      :focus {
+        outline: none;
+      }
+
+      input {
+        line-height: 0.5;
+        border-color: #1d7edf !important;
+        box-shadow: none !important;
+        height: 2.7rem;
+      }
+
+      .title {
+        text-align: center;
+      }
+
+      .btn {
+        margin-left: 10px;
+        height: 2.7rem;
+        width: 100px;
+        font-size: 10px;
+        line-height: 1.5;
+        font-size: 1rem;
+      }
+    }
+
+    .card {
+      width: 18rem;
+      /* justify-content: center; */
+      align-items: center;
+
+      img {
+        width: 15rem;
+      }
+
+      .card-body {
+        border-top: 1px lightgrey solid;
+        margin-top: 5px;
+        width: 100%;
+        padding: 1.5rem;
+
+        >* {
+          border-bottom: 1px lightgrey solid;
+          padding: 0.2rem 0;
+        }
+
+        a {
+          text-decoration: none;
+        }
+
+        p {
+          margin-bottom: 0.5rem;
+        }
+
+        .btn {
+          padding: 0.25rem 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+// search scss ends here
+
+// btns scss starts here
+.backBtn {
+  color: white;
+  align-items: center;
+  display: flex;
+  background-color: transparent;
+  border-color: transparent;
+
+  .mat-icon {
+    height: 0px !important;
+    width: 0px !important;
+    margin-right: 20px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.backBtnText {
+  color: white;
+}
+
+.clearBtn {
+  background-color: transparent;
+  height: 180px;
+}
+
+// btns scss ends here
+
+// user Info scss starts here
+
+
+.repoUserInfoContainer {
+  // padding: 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  // border: solid lightseagreen;
+  margin: 20px;
+
+
+  img {
+    margin-top: 0px !important;
+    height: 13rem;
+    width: 13rem;
+    border-radius: 50%;
+    border: solid lawngreen;
+    margin: 0 0.5rem;
+  }
+
+  .userInfo {
+    text-align: left;
+
+    .userDetails {
+      color: white;
+      display: flex;
+      align-items: baseline;
+
+      .mat-icon {
+        height: 0px !important;
+      }
+    }
+
+    .userName {
+      text-transform: capitalize;
+    }
+
+    >* {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  a {
+    color: white;
+  }
+}
+
+// user Info scss ends here
+
+// user info deatils scss starts here
+
+.mat-card {
+  background: #fff;
+  border: solid white;
+  /* border-bottom-color: #BC8CF2; */
+  border-bottom-color: #0a2c53;
+  //  border-bottom-color: #AA14F0;
+  //  border-right-color:#AA14F0;
+  border-right-color: #204492;
+  border-left-color: #eeeeee;
+}
+
+.userInfo {
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+// user info deatils scss ends here
+
+
+// user repo scss starts here
+
+.meal-list {
+  list-style: none;
+  padding: 0.5rem;
+
+  li {
+    border-radius: 4px;
+    padding: 0.5rem;
+
+    h3 {
+      padding-bottom: 0.6rem !important;
+      // font-size: 1rem !important;
+      font-size: 25px !important;
+      font-family: system-ui;
+      // color: #AA14F0;
+      color: rgba(0, 172, 193, 1);
+      text-transform: capitalize;
+    }
+
+    div {
+      padding: 0.3rem 0.5rem;
+      height: 205px;
+
+      >* {
+        border-bottom: 1px lightgrey solid;
+        padding: 0.2rem 0;
+        margin-bottom: 0.2rem;
+        // border-bottom-color: paleturquoise;
+      }
+
+      // border: 1px solid lightgray;
+      .tag {
+        border: 0.5px solid lightgray;
+        border-radius: 34%;
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+        padding-top: 0.1rem;
+        margin-left: 0.4rem;
+      }
+
+      .hyperLink {
+        display: flex;
+        overflow: hidden;
+        white-space: nowrap;
+        text-decoration: none;
+        text-overflow: ellipsis;
+      }
+
+      .tiles {
+        border-width: 0 0 0 0 !important;
+
+        span {
+          padding: 4px 4px;
+          padding-bottom: 4px;
+          font-size: 15px;
+          border-radius: 6px;
+          // background-color: #AA14F0;
+          background-color: rgb(19, 223, 223);
+          color: rgb(255, 255, 255);
+        }
+      }
+    }
+  }
+}
+
+// user repo scss ends here
+
+//  waves scss starts here 
+@import url(//fonts.googleapis.com/scss?family=Lato:300:400);
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  letter-spacing: 2px;
+  font-size: 48px;
+}
+
+p {
+  font-family: "Lato", sans-serif;
+  letter-spacing: 1px;
+  font-size: 14px;
+  color: #333333;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+  background: linear-gradient(60deg,
+      rgb(4, 42, 72) 0%,
+      rgb(24, 96, 169) 100%);
+  color: white;
+}
+
+.logo {
+  width: 50px;
+  fill: white;
+  padding-right: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.inner-header {
+  height: 30vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  margin-bottom: -7px;
+  /*Fix for safari gap*/
+  min-height: 100px;
+  max-height: 150px;
+}
+
+.content {
+  position: relative;
+  height: 20vh;
+  //   text-align: center;
+  background-color: white;
+}
+
+// /* Animation */
+
+// .parallax>use {
+//   animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+// }
+
+// .parallax>use:nth-child(1) {
+//   animation-delay: -2s;
+//   animation-duration: 7s;
+// }
+
+// .parallax>use:nth-child(2) {
+//   animation-delay: -3s;
+//   animation-duration: 10s;
+// }
+
+// .parallax>use:nth-child(3) {
+//   animation-delay: -4s;
+//   animation-duration: 13s;
+// }
+
+// .parallax>use:nth-child(4) {
+//   animation-delay: -5s;
+//   animation-duration: 20s;
+// }
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height: 40px;
+    min-height: 40px;
+  }
+
+  .content {
+    height: 30vh;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+//  waves scss ends here 
